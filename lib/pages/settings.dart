@@ -1,4 +1,3 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_calendar/theme/spacing.dart';
@@ -65,11 +64,7 @@ class Settings extends StatelessWidget {
               borderRadius: BorderRadius.circular(Spacing.s),
               color: themeData.colorScheme.background,
             ),
-            margin: const EdgeInsets.only(
-                left: Spacing.m,
-                right: Spacing.m,
-                bottom: Spacing.m
-            ),
+            margin: const EdgeInsets.only(left: Spacing.m, right: Spacing.m, bottom: Spacing.m),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

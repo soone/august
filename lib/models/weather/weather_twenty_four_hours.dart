@@ -34,9 +34,7 @@ class WeatherTwentyFourHours {
     map['code'] = code;
     map['updateTime'] = updateTime;
     map['fxLink'] = fxLink;
-    if (hourly != null) {
-      map['hourly'] = hourly.map((v) => v.toJson()).toList();
-    }
+    map['hourly'] = hourly.map((v) => v.toJson()).toList();
     if (refer != null) {
       map['refer'] = refer?.toJson();
     }

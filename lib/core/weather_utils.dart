@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_bg/utils/weather_type.dart';
+import 'package:flutter_weather_bg_null_safety/utils/weather_type.dart';
 
 import '../theme/colors.dart';
 
@@ -25,10 +25,7 @@ WeatherType getWeatherTypeBy(String weatherText, String icon) {
       return WeatherType.lightSnow;
     } else if (weatherText == '中雪' || weatherText == '大到中雪') {
       return WeatherType.middleSnow;
-    } else if (weatherText == '大雪' ||
-        weatherText == '暴雪' ||
-        weatherText == '中到大雪' ||
-        weatherText == '大到暴雪') {
+    } else if (weatherText == '大雪' || weatherText == '暴雪' || weatherText == '中到大雪' || weatherText == '大到暴雪') {
       return WeatherType.heavySnow;
     } else {
       return WeatherType.lightSnow;

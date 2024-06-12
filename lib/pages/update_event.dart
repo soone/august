@@ -43,13 +43,14 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
   }
 
   Future<CalendarEvent?> loadInitialEventData() async {
-    setState(() { _isLoading = true; });
-    var event =  await CalendarDB.getEventsById(widget.eventId);
+    setState(() {
+      _isLoading = true;
+    });
+    var event = await CalendarDB.getEventsById(widget.eventId);
     if (event != null) {
       _titleController.text = event.title;
       _contentController.text = event.content;
-      _dateController.text =
-          formatDateTimeFromMilliseconds(event.date);
+      _dateController.text = formatDateTimeFromMilliseconds(event.date);
       setState(() {
         _isCycle = event.isCycle == 1 ? true : false;
         _cycleBy = event.cycleBy == 1 ? true : false;
@@ -85,9 +86,8 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
         body: SingleChildScrollView(
           child: SafeArea(
             child: FutureBuilder(
-              builder: (BuildContext context,
-                  AsyncSnapshot<CalendarEvent?> snapshot) {
-
+              future: null,
+              builder: (BuildContext context, AsyncSnapshot<CalendarEvent?> snapshot) {
                 return Container(
                   color: themeData.colorScheme.background,
                   child: Padding(
@@ -101,16 +101,13 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: Spacing.s),
+                            padding: const EdgeInsets.only(bottom: Spacing.s),
                             child: TextFormField(
                               autofocus: true,
                               autocorrect: false,
                               controller: _titleController,
                               decoration: InputDecoration(
-                                suffix: _isLoading
-                                    ? const CircularProgressIndicator()
-                                    : null,
+                                suffix: _isLoading ? const CircularProgressIndicator() : null,
                                 hintText: "提醒标题",
                                 hintStyle: TextStyle(
                                   fontSize: AppFontSize.medium,
@@ -118,8 +115,7 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                                   color: themeData.colorScheme.secondary,
                                 ),
                                 filled: true,
-                                fillColor:
-                                    themeData.scaffoldBackgroundColor,
+                                fillColor: themeData.scaffoldBackgroundColor,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide.none,
@@ -136,8 +132,7 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                             ),
                           ),
                           Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: Spacing.s),
+                            padding: const EdgeInsets.only(bottom: Spacing.s),
                             child: TextFormField(
                               autocorrect: false,
                               controller: _contentController,
@@ -145,9 +140,7 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                               maxLength: 100,
                               keyboardType: TextInputType.multiline,
                               decoration: InputDecoration(
-                                suffix: _isLoading
-                                    ? const CircularProgressIndicator()
-                                    : null,
+                                suffix: _isLoading ? const CircularProgressIndicator() : null,
                                 hintText: "提醒内容",
                                 hintStyle: TextStyle(
                                   fontSize: AppFontSize.medium,
@@ -155,8 +148,7 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                                   color: themeData.colorScheme.secondary,
                                 ),
                                 filled: true,
-                                fillColor:
-                                    themeData.scaffoldBackgroundColor,
+                                fillColor: themeData.scaffoldBackgroundColor,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide.none,
@@ -166,21 +158,16 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                           ),
                           InkWell(
                             onTap: () {
-                              showDateTimePicker(context, isDarkMode,
-                                  (picked) {
-                                _dateController.text =
-                                    formatDateTime(picked);
+                              showDateTimePicker(context, isDarkMode, (picked) {
+                                _dateController.text = formatDateTime(picked);
                               });
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.only(bottom: Spacing.s),
+                              padding: const EdgeInsets.only(bottom: Spacing.s),
                               child: TextFormField(
                                 controller: _dateController,
                                 decoration: InputDecoration(
-                                  suffix: _isLoading
-                                      ? const CircularProgressIndicator()
-                                      : null,
+                                  suffix: _isLoading ? const CircularProgressIndicator() : null,
                                   enabled: false,
                                   hintText: "选择时间和日期",
                                   hintStyle: TextStyle(
@@ -189,11 +176,9 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                                     color: themeData.colorScheme.secondary,
                                   ),
                                   filled: true,
-                                  fillColor:
-                                      themeData.scaffoldBackgroundColor,
+                                  fillColor: themeData.scaffoldBackgroundColor,
                                   border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                     borderSide: BorderSide.none,
                                   ),
                                 ),
@@ -213,8 +198,7 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text(
                                       "循环提醒",
@@ -239,8 +223,7 @@ class UpdateEventState extends State<UpdateEvent> with WidgetsBindingObserver {
                                 Opacity(
                                   opacity: _isCycle ? 1 : 0.5,
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         "按${_cycleBy ? '农历' : '公历'}循环",

@@ -8,10 +8,8 @@ import 'package:simple_calendar/pages/update_event.dart';
 
 import '../pages/about.dart';
 import '../pages/home.dart';
-import '../pages/settings.dart';
 
-var homeHandler = Handler(
-    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+var homeHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   return const Home();
 });
 
@@ -37,18 +35,15 @@ var eventUpdateHandler = Handler(
   },
 );
 
-var aboutHandler = Handler(
-    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
-      return const About();
-    });
+var aboutHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  return const About();
+});
 
-var senseDetailHandler = Handler(
-    handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
-      var sense = context?.settings?.arguments as CommonSense;
-      return SenseDetail(sense: sense);
-    });
+var senseDetailHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+  var sense = context?.settings?.arguments as CommonSense;
+  return SenseDetail(sense: sense);
+});
 
-var senseLikesHandler = Handler(
-    handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
-      return const SenseLikes();
-    });
+var senseLikesHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+  return const SenseLikes();
+});

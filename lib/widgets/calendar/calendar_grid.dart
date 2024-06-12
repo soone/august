@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'positioned_border.dart';
 import '../../core/calendar.dart';
@@ -75,13 +75,10 @@ class CalendarGrid extends StatelessWidget {
     );
   }
 
-  double _getCalendarGridContainerHeight(
-      ThemeData themeData, List<CalendarDate> calendarDates) {
+  double _getCalendarGridContainerHeight(ThemeData themeData, List<CalendarDate> calendarDates) {
     // 5 lines or 6 lines
     var lines = calendarDates.length > 35 ? 6 : 5;
-    var gridHeight = themeData.platform == TargetPlatform.android
-        ? androidGridHeight
-        : iosGridHeight;
+    var gridHeight = themeData.platform == TargetPlatform.android ? androidGridHeight : iosGridHeight;
 
     return lines * gridHeight;
   }
@@ -120,8 +117,7 @@ class CalendarGridItem extends StatelessWidget {
 
         final dateColor = getDateColor(date, context);
         final subscript = getSubscriptText(lunar);
-        final subscriptBackgroundColor =
-            getSubscriptBackgroundColor(lunar, context);
+        final subscriptBackgroundColor = getSubscriptBackgroundColor(lunar, context);
         final festivals = getFestivals(date);
         final lunarDateColor = getLunarDateColor(festivals, lunar, context);
         final lunarText = getLunarText(festivals, lunar);
@@ -145,8 +141,7 @@ class CalendarGridItem extends StatelessWidget {
               opacity: opacity,
               child: Stack(
                 children: [
-                  if (isToday)
-                    PositionedBorder(color: hintColor.withOpacity(0.3)),
+                  if (isToday) PositionedBorder(color: hintColor.withOpacity(0.3)),
                   if (isSelected) PositionedBorder(color: highlightColor),
                   SizedBox(
                     width: double.infinity,
@@ -154,23 +149,18 @@ class CalendarGridItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('${date.day}',
-                            style: themeData.textTheme.bodyMedium
-                                ?.copyWith(color: dateColor)),
+                        Text('${date.day}', style: themeData.textTheme.bodyMedium?.copyWith(color: dateColor)),
                         Text(
                           lunarText,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: themeData.textTheme.bodySmall
-                              ?.copyWith(color: lunarDateColor),
+                          style: themeData.textTheme.bodySmall?.copyWith(color: lunarDateColor),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                              eventsLength > 3 ? 3 : eventsLength, (index) {
+                          children: List.generate(eventsLength > 3 ? 3 : eventsLength, (index) {
                             return Padding(
-                              padding:
-                                  const EdgeInsets.only(right: Spacing.one),
+                              padding: const EdgeInsets.only(right: Spacing.one),
                               child: CircleAvatar(
                                 radius: 2,
                                 backgroundColor: themeData.dividerColor,

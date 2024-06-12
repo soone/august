@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_bg/flutter_weather_bg.dart';
+import 'package:flutter_weather_bg_null_safety/bg/weather_bg.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_calendar/widgets/weather/currently_header.dart';
 import 'package:simple_calendar/widgets/weather/seven_day_forecast.dart';

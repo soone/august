@@ -1,4 +1,3 @@
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_calendar/core/calendar.dart';
 import 'package:simple_calendar/models/calendar/calendar_date.dart';

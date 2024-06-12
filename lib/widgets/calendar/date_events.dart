@@ -1,4 +1,3 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_calendar/core/calendar_grid_utils.dart';
@@ -36,8 +35,7 @@ class DateEvents extends StatelessWidget {
         fontSize: AppFontSize.regular,
         color: themeData.primaryColor,
       );
-      var titleStyle = themeData.textTheme.titleMedium
-          ?.copyWith(fontSize: AppFontSize.regular);
+      var titleStyle = themeData.textTheme.titleMedium?.copyWith(fontSize: AppFontSize.regular);
       var timeStyle = titleStyle?.copyWith(
         fontWeight: AppFontWeight.light,
         color: themeData.colorScheme.secondary,
@@ -76,8 +74,7 @@ class DateEvents extends StatelessWidget {
             Column(
               children: List.generate(events.length, (index) {
                 var event = events[index];
-                var createTime =
-                    formatDateHourFromMilliseconds(event.createTime);
+                var createTime = formatDateHourFromMilliseconds(event.createTime);
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -148,8 +145,7 @@ class DateEvents extends StatelessWidget {
                         ),
                         child: Text(
                           event.content,
-                          style: themeData.textTheme.bodySmall
-                              ?.copyWith(fontSize: AppFontSize.regular),
+                          style: themeData.textTheme.bodySmall?.copyWith(fontSize: AppFontSize.regular),
                         ),
                       ),
                   ],
